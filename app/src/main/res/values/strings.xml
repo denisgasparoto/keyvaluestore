@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Key Value Store</string>
+    <string name="command_title">Command</string>
+    <string name="button_execute">Execute</string>
+</resources>
