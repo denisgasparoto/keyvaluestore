@@ -1,6 +1,6 @@
 package com.denisgasparoto.keyvaluestore.features.domain
 
-import com.denisgasparoto.keyvaluestore.features.data.Repository
+import com.denisgasparoto.keyvaluestore.features.data.KeyValueRepository
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
@@ -15,14 +15,14 @@ class UseCaseTest {
 //    2. Change the file name to make it clearer and more concise
 
     @Mock
-    lateinit var mockRepository: Repository
+    lateinit var mockKeyValueRepository: KeyValueRepository
 
     private lateinit var useCase: UseCase
 
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        useCase = UseCase(mockRepository)
+        useCase = UseCase(mockKeyValueRepository)
     }
 
     @Test
@@ -34,8 +34,8 @@ class UseCaseTest {
         useCase.executeCommand(command)
 
         // Then
-        verify(mockRepository).set("key", "value")
-        verifyNoMoreInteractions(mockRepository)
+        verify(mockKeyValueRepository).set("key", "value")
+        verifyNoMoreInteractions(mockKeyValueRepository)
     }
 
     @Test
@@ -47,8 +47,8 @@ class UseCaseTest {
         useCase.executeCommand(command)
 
         // Then
-        verify(mockRepository).get("key")
-        verifyNoMoreInteractions(mockRepository)
+        verify(mockKeyValueRepository).get("key")
+        verifyNoMoreInteractions(mockKeyValueRepository)
     }
 
     @Test
@@ -60,8 +60,8 @@ class UseCaseTest {
         useCase.executeCommand(command)
 
         // Then
-        verify(mockRepository).delete("key")
-        verifyNoMoreInteractions(mockRepository)
+        verify(mockKeyValueRepository).delete("key")
+        verifyNoMoreInteractions(mockKeyValueRepository)
     }
 
     @Test
@@ -73,7 +73,7 @@ class UseCaseTest {
         useCase.executeCommand(command)
 
         // Then
-        verify(mockRepository).count("value")
-        verifyNoMoreInteractions(mockRepository)
+        verify(mockKeyValueRepository).count("value")
+        verifyNoMoreInteractions(mockKeyValueRepository)
     }
 }

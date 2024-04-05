@@ -1,11 +1,10 @@
 package com.denisgasparoto.keyvaluestore.features.presentation
 
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.denisgasparoto.keyvaluestore.R
 import com.denisgasparoto.keyvaluestore.core.MyApplication
+import com.denisgasparoto.keyvaluestore.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
@@ -14,21 +13,36 @@ class MainActivity : AppCompatActivity() {
 //    1. Add ViewAction and ViewState
 //    2. Add user interaction handling functions
 //    3. Add error handling with feedback messages
-//    5. Change the file name to make it clearer and more concise
+
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_main)
 
         val appContainer = MyApplication().appContainer
-        val viewModel = MainViewModel(appContainer.useCase)
+        val viewModel = MainViewModel(
+            appContainer.countValueUseCase,
+            appContainer.deleteValueUseCase,
+            appContainer.getValueUseCase,
+            appContainer.handleTransactionUseCase,
+            appContainer.setValueUseCase
+        )
 
-        val commandEditText = findViewById<EditText>(R.id.commandEditText)
-        val executeButton = findViewById<Button>(R.id.executeButton)
-
-        executeButton.setOnClickListener {
-            val command = commandEditText.text.toString()
+        binding.executeButton.setOnClickListener {
+            val command = binding.commandEditText.text.toString()
             viewModel.executeCommand(command)
+        }
+
+        binding.beginTransaction.setOnClickListener {
+            viewModel.onBeginTransaction()
+        }
+        binding.commitTransaction.setOnClickListener {
+            viewModel.onCommitTransaction()
+        }
+        binding.rollbackTransaction.setOnClickListener {
+            viewModel.onRollbackTransaction()
         }
     }
 }

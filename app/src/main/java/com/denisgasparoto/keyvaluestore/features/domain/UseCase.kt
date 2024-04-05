@@ -1,8 +1,8 @@
 package com.denisgasparoto.keyvaluestore.features.domain
 
-import com.denisgasparoto.keyvaluestore.features.data.Repository
+import com.denisgasparoto.keyvaluestore.features.data.KeyValueRepository
 
-class UseCase(private val repository: Repository) {
+class UseCase(private val keyValueRepository: KeyValueRepository) {
 
 //    Next steps:
 //    1. Segregate one UseCase per command
@@ -14,10 +14,10 @@ class UseCase(private val repository: Repository) {
     fun executeCommand(command: String) {
         val parts = command.split(" ")
         when (parts[0].uppercase()) {
-            "SET" -> repository.set(parts[1], parts[2])
-            "GET" -> repository.get(parts[1])
-            "DELETE" -> repository.delete(parts[1])
-            "COUNT" -> repository.count(parts[1])
+            "SET" -> keyValueRepository.set(parts[1], parts[2])
+            "GET" -> keyValueRepository.get(parts[1])
+            "DELETE" -> keyValueRepository.delete(parts[1])
+            "COUNT" -> keyValueRepository.count(parts[1])
             "BEGIN" -> beginTransaction()
             "COMMIT" -> commitTransaction()
             "ROLLBACK" -> rollbackTransaction()
@@ -25,7 +25,7 @@ class UseCase(private val repository: Repository) {
     }
 
     private fun beginTransaction() {
-        transactionStack.add(repository.getAll().toMutableMap())
+        transactionStack.add(keyValueRepository.getAll().toMutableMap())
     }
 
     private fun commitTransaction() {
@@ -34,7 +34,7 @@ class UseCase(private val repository: Repository) {
 
     private fun rollbackTransaction() {
         if (transactionStack.isNotEmpty()) {
-            repository.replaceAll(transactionStack.removeAt(transactionStack.size - 1))
+            keyValueRepository.replaceAll(transactionStack.removeAt(transactionStack.size - 1))
         }
     }
 }

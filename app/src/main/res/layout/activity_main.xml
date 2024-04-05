@@ -22,4 +22,22 @@
         android:layout_height="wrap_content"
         android:text="@string/button_execute" />
 
+    <Button
+        android:id="@+id/beginTransaction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Begin Transaction" />
+
+    <Button
+        android:id="@+id/commitTransaction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Commit Transaction" />
+
+    <Button
+        android:id="@+id/rollbackTransaction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rollback Transaction" />
+
 </androidx.appcompat.widget.LinearLayoutCompat>
