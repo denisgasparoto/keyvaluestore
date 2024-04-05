@@ -2,10 +2,7 @@ package com.denisgasparoto.keyvaluestore.features.data
 
 import timber.log.Timber
 
-class KeyValueRepositoryImpl : KeyValueRepository {
-
-//    Next steps:
-//    1. Add DataSource for different sources memory/local
+internal class KeyValueRepositoryImpl : KeyValueRepository {
 
     private val keyValueMap = mutableMapOf<String, String>()
 

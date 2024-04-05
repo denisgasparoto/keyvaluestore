@@ -1,6 +1,6 @@
 package com.denisgasparoto.keyvaluestore.features.data
 
-interface KeyValueRepository {
+internal interface KeyValueRepository {
     fun set(key: String, value: String)
     fun get(key: String): String?
     fun delete(key: String)

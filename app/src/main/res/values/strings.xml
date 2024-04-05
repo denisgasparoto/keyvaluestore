@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">Key Value Store</string>
-    <string name="command_title">Command</string>
-    <string name="button_execute">Execute</string>
+
+    <string name="type_here">Type here</string>
+
+    <string name="count_values">Count Values</string>
+    <string name="delete_value">Delete Value</string>
+    <string name="get_value">Get Value</string>
+    <string name="set_value">Set Value</string>
+    <string name="begin_transaction">Begin Transaction</string>
+    <string name="commit_transaction">Commit Transaction</string>
+    <string name="rollback_transaction">Rollback Transaction</string>
 </resources>

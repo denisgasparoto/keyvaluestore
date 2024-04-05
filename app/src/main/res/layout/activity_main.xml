@@ -8,36 +8,61 @@
     tools:context=".features.presentation.MainActivity">
 
     <EditText
-        android:id="@+id/commandEditText"
+        android:id="@+id/editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/input_text_margin_bottom"
-        android:hint="@string/command_title"
+        android:hint="@string/type_here"
         android:inputType="text"
+        android:importantForAutofill="no"
         android:maxLines="1" />
 
     <Button
-        android:id="@+id/executeButton"
+        android:id="@+id/countValue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/button_execute" />
+        android:text="@string/count_values" />
+
+    <Button
+        android:id="@+id/deleteValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/delete_value" />
+
+    <Button
+        android:id="@+id/getValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/get_value" />
+
+    <Button
+        android:id="@+id/setValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/set_value" />
 
     <Button
         android:id="@+id/beginTransaction"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Begin Transaction" />
+        android:text="@string/begin_transaction" />
 
     <Button
         android:id="@+id/commitTransaction"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Commit Transaction" />
+        android:text="@string/commit_transaction" />
 
     <Button
         android:id="@+id/rollbackTransaction"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Rollback Transaction" />
+        android:text="@string/rollback_transaction" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

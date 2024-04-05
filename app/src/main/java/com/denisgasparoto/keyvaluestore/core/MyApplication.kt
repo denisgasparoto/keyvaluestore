@@ -1,7 +1,8 @@
 package com.denisgasparoto.keyvaluestore.core
 
 import android.app.Application
+import com.denisgasparoto.keyvaluestore.core.di.AppContainer
 
-class MyApplication : Application() {
+internal class MyApplication : Application() {
     val appContainer = AppContainer()
 }

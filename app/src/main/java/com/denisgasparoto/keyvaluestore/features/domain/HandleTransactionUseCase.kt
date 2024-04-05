@@ -2,7 +2,7 @@ package com.denisgasparoto.keyvaluestore.features.domain
 
 import com.denisgasparoto.keyvaluestore.features.data.KeyValueRepository
 
-class HandleTransactionUseCase(
+internal class HandleTransactionUseCase(
     private val keyValueRepository: KeyValueRepository
 ) {
     private val transactionStack = mutableListOf<MutableMap<String, String>>()
@@ -16,7 +16,9 @@ class HandleTransactionUseCase(
 
     fun rollbackTransaction() {
         if (transactionStack.isNotEmpty()) {
-            keyValueRepository.replaceAll(transactionStack.removeAt(transactionStack.size - 1))
+            keyValueRepository.replaceAll(
+                transactionStack.removeAt(transactionStack.size.minus(1))
+            )
         }
     }
 }
